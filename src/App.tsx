@@ -1,11 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { CarritoComponent } from "./components/CarritoComponent";
 import { HeaderComponent } from "./components/HeaderComponent";
 import { ListadoProductosComponent } from "./components/ListadoProductosComponent";
 import { CartContext } from "./CartContext/CartContext";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getProductsList } from "./GlobalState/Actions";
-import { IProduct } from "./models";
 
 function App() {
 
