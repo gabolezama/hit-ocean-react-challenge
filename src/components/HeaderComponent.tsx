@@ -1,13 +1,19 @@
+import { useContext } from "react";
+import { CartContext } from "../CartContext/CartContext";
+import { ReactReduxContextValue } from "react-redux";
+
 export const HeaderComponent = () => {
-  let gemasCounter: number = 0;
+  
+  const {stones, added, showCarrito, setShowCarrito} = useContext(CartContext) as any;
+
   return (
     <div className="bg-stone-700 py-4 px-8 flex justify-between items-center sticky top-0 shadow-md z-10">
       <h1 className="text-white text-2xl font-bold">🧙‍♂️ Potion Shop</h1>
       <div className="flex gap-2 items-center">
         <img src="./gem.png" />
-        <span>{gemasCounter + ' Gemas'}</span>
+        <span>{stones + ' Gemas'}</span>
       </div>
-      <button className="text-white hover:underline">Ver Carrito (xxx)</button>
+      <button className="text-white hover:underline" onClick={()=> setShowCarrito(!showCarrito)}>{'Ver Carrito: ' + added.length }</button>
     </div>
   );
 };

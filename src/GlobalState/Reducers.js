@@ -2,12 +2,19 @@
 const PRODUCTS_INITIAL_STATE ={
     productsList: [],
     bought: [],
-    onErrorFetch: ''
+    onErrorFetch: '',
+    setLoader: false
 }
 
 export const productsReducer = (state = PRODUCTS_INITIAL_STATE, action) => {
 
     switch (action.type) {
+
+      case 'SET_LOADER':
+        return{
+            ...state,
+            set: action.payload
+        }
 
       case 'LIST_LOADED_SUCCESSFULLY':
         return {
