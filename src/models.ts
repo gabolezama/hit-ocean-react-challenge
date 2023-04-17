@@ -16,3 +16,22 @@ export type CartContextType = {
     addItemToCart: (item: IProduct, price: number) => void;
     deleteItem: (id: number, price: number) => void;
 }
+
+export interface ProductsApiResponse {
+data: IProduct[];
+}
+export interface ErrorResponse {
+    message: string;
+}
+
+export interface ProductsState {
+    productsList: IProduct[];
+    bought: IProduct[];
+    onErrorFetch: string;
+    setLoader: boolean;
+}
+  
+export interface IAction {
+    type: string;
+    payload: any;
+}
