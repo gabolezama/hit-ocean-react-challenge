@@ -48,7 +48,8 @@ export function CartContextProvider({ children }: { children: ReactNode }) {
         showCarrito,
         setShowCarrito,
         addItemToCart,
-        deleteItem
+        deleteItem,
+        setShowToast
     }}>
         {children}
     </CartContext.Provider>

@@ -15,6 +15,7 @@ export type CartContextType = {
     setShowCarrito: React.Dispatch<React.SetStateAction<boolean>>;
     addItemToCart: (item: IProduct, price: number) => void;
     deleteItem: (id: number, price: number) => void;
+    setShowToast:  React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface ProductsApiResponse {
