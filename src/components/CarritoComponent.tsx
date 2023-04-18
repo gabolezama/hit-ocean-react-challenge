@@ -2,10 +2,17 @@ import { useContext } from "react";
 import { CartContext } from "../CartContext/CartContext";
 import { CartContextType } from "../models";
 import Toast from "./Toast/Toast";
+import { useSelector } from "react-redux";
+import RoundLoader from "./Loader/RoundLoader";
 
-export const CarritoComponent = () => {
+export const CarritoComponent = (): JSX.Element  => {
   
   const {added, showToast, deleteItem, setShowCarrito, buyItems} = useContext(CartContext) as CartContextType;
+
+  const comprados = useSelector((state: any) => state.productsReducer.bought)
+  console.log('Compras: ', comprados);
+  
+  const showLoader = useSelector((state: any) => state.productsReducer.setLoader)
 
   return(
     <>
@@ -14,10 +21,11 @@ export const CarritoComponent = () => {
         onClick={()=> setShowCarrito(false)}>
         Volver
       </button>
+      { showLoader && <RoundLoader/> }
       { showToast && <Toast message={'Los productos fueron comprados!!'}/>}
       {Array.isArray(added) && added.length > 0 ?
         <>
-          <h1> Pociones Compradas:</h1>
+          <h1>Pociones Seleccionadas:</h1>
           <ul className="bg-gray-500 rounded-lg p-1">
           {
             added.map((item, i)=>(

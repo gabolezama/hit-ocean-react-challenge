@@ -28,7 +28,7 @@ export const productsReducer = (state: ProductsState = PRODUCTS_INITIAL_STATE, a
     case 'PURCHASE_SUCCESSFUL':
       return {
         ...state,
-        bought: action.payload
+        bought: state.bought.concat(action.payload)
       };
     case 'PURCHASE_FAILED':
       return {

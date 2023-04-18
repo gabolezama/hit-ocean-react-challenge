@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { CartContextType, IProduct } from "../models";
 import Toast from "./Toast/Toast";
 
-export const ListadoProductosComponent = () => {
+export const ListadoProductosComponent = (): JSX.Element  => {
 
   const {addItemToCart, added, showToast} = useContext(CartContext) as CartContextType;
 

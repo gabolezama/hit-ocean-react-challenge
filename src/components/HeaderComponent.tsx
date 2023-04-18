@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { CartContext } from "../CartContext/CartContext";
-import { ReactReduxContextValue } from "react-redux";
+import { CartContextType } from "../models";
 
-export const HeaderComponent = () => {
+export const HeaderComponent = (): JSX.Element => {
   
-  const {stones, added, showCarrito, setShowCarrito} = useContext(CartContext) as any;
+  const {stones, added, showCarrito, setShowCarrito} = useContext(CartContext) as CartContextType;
 
   return (
     <div className="bg-stone-700 py-4 px-8 flex justify-between items-center sticky top-0 shadow-md z-10">

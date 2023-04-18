@@ -1,13 +1,18 @@
 import axios, { AxiosResponse } from 'axios';
 import { Dispatch } from 'redux';
-import { ProductsApiResponse } from '../models';
+import { IAction, ProductsApiResponse } from '../models';
 
 export const getProductsList = function() {
-  return async (dispatch: Dispatch) => {
+  return async (dispatch: Dispatch): Promise<void> => {
     try {
-      const response: AxiosResponse<ProductsApiResponse> = await axios('http://localhost:3001/productos');
+      dispatch({ type: 'SET_LOADER', payload: true });
 
-      dispatch({ type: 'LIST_LOADED_SUCCESSFULLY', payload: response.data });
+      setTimeout(async() =>{
+        const response: AxiosResponse<ProductsApiResponse> = await axios('http://localhost:3001/productos');
+        dispatch({ type: 'LIST_LOADED_SUCCESSFULLY', payload: response.data });
+        dispatch({ type: 'SET_LOADER', payload: false });
+      }, 3000)
+
     } catch (error: any) {
       dispatch({ type: 'LIST_LOADED_FAILED', payload: `Se produjo un error al intentar obtener los productos. Error: ${error.stack}` });
     }
@@ -16,13 +21,20 @@ export const getProductsList = function() {
 
 export const executePurchase = function( arrayToSend: number[]) {
 
-  return async (dispatch: Dispatch) => {
+  return async (dispatch: Dispatch): Promise<void> => {
     try {
-      const response: any = await axios.post('http://localhost:3001/compras',{
-        itemsId: arrayToSend
-      })
+
+      dispatch({ type: 'SET_LOADER', payload: true });
+
+      setTimeout(async() =>{
+        const response: AxiosResponse<ProductsApiResponse>= await axios.post('http://localhost:3001/compras',{
+          itemsId: arrayToSend
+        })
+        dispatch({ type: 'PURCHASE_SUCCESSFUL', payload: response.data });;
+        dispatch({ type: 'SET_LOADER', payload: false });
+      }, 3000)
+
       
-      dispatch({ type: 'PURCHASE_SUCCESSFUL', payload: response.data });
     } catch (error: any) {
       console.log('Error: ' + error);
       

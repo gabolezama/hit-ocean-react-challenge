@@ -1,18 +1,19 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { CartContext } from '../../CartContext/CartContext';
+import { CartContextType } from '../../models';
 
-function Toast({ message }) {
+function Toast({ message }: {message: string}): JSX.Element {
 
-  const {showToast, setShowToast} = useContext(CartContext);
+  const {setShowToast} = useContext(CartContext) as CartContextType;
 
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState<boolean>(true);
 
   useEffect(()=>{
 
     const timer = setTimeout(() => {
       setVisible(false);
       setShowToast(false); 
-    }, 2000);
+    }, 500);
 
     return ()=>{
       clearTimeout(timer);
