@@ -37,7 +37,6 @@ export const executePurchase = function( arrayToSend: number[]) {
       
     } catch (error: any) {
       console.log('Error: ' + error);
-      
       dispatch({ type: 'PURCHASE_FAILED', payload: `Se produjo un error al intentar realizar la compra. Error: ${error.stack}` });
     }
   };

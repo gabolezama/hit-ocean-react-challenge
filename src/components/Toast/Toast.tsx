@@ -13,7 +13,7 @@ function Toast({ message }: {message: string}): JSX.Element {
     const timer = setTimeout(() => {
       setVisible(false);
       setShowToast(false); 
-    }, 500);
+    }, 2000);
 
     return ()=>{
       clearTimeout(timer);

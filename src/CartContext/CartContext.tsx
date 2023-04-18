@@ -12,8 +12,8 @@ export function CartContextProvider({ children }: { children: ReactNode }) {
   const [showCarrito, setShowCarrito] = useState<boolean>(false);
   const [showToast, setShowToast] = useState<boolean>(false);
 
-  let arrayAdded = [...added]
-  let stonesCount = stones
+  let arrayAdded: IProduct[] = [...added]
+  let stonesCount: number = stones
 
   const dispatcher = useDispatch()
 

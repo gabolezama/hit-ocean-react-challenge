@@ -1,4 +1,4 @@
-import { IAction, ProductsState } from "../models";
+import { ProductsState } from "../models";
 
 const PRODUCTS_INITIAL_STATE: ProductsState = {
     productsList: [],

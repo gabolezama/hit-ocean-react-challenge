@@ -13,8 +13,6 @@ function App() {
   const dispatcher = useDispatch();
   const {showCarrito} = useContext(CartContext) as CartContextType;
 
-  const showLoader = useSelector((state: any) => state.productsReducer.setLoader)
-
   useEffect(() => {
     dispatcher(getProductsList() as any);
   }, [])
@@ -27,7 +25,7 @@ function App() {
       <HeaderComponent />
       <div className="flex justify-center min-h-full">
         <div className="max-w-sm w-full py-5">
-            { showLoader ? <RoundLoader/> : showCarrito ? <CarritoComponent /> : <ListadoProductosComponent />}
+            { showCarrito ? <CarritoComponent /> : <ListadoProductosComponent />}
         </div>
       </div>
     </div>

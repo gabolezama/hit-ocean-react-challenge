@@ -4,7 +4,7 @@ import { CartContextType } from "../models";
 
 export const HeaderComponent = (): JSX.Element => {
   
-  const {stones, added, showCarrito, setShowCarrito} = useContext(CartContext) as CartContextType;
+  const {stones, added, showToast, setShowCarrito} = useContext(CartContext) as CartContextType;
 
   return (
     <div className="bg-stone-700 py-4 px-8 flex justify-between items-center sticky top-0 shadow-md z-10">
@@ -13,7 +13,12 @@ export const HeaderComponent = (): JSX.Element => {
         <img src="./gem.png" />
         <span>{stones + ' Gemas'}</span>
       </div>
-      <button className="text-white hover:underline" onClick={()=> setShowCarrito(!showCarrito)}>{'Ver Carrito: ' + added.length }</button>
+      <button 
+          className={`${showToast? 'text-gray-300' : 'text-white hover:underline'}`} 
+          onClick={()=> setShowCarrito(true)}
+          disabled={showToast}>
+          {'Ver Carrito: ' + added.length }
+      </button>
     </div>
   );
 };
