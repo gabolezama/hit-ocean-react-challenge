@@ -13,11 +13,11 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-      <CartContextProvider>
     <Provider store={ store }>
+      <CartContextProvider>
         <App />
-    </Provider>
       </CartContextProvider>
+    </Provider>
   </React.StrictMode>
 );
 

@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { CartContext } from "../CartContext/CartContext";
 import { useSelector } from "react-redux";
-import { IProduct } from "../models";
+import { CartContextType, IProduct } from "../models";
 import Toast from "./Toast/Toast";
 
 export const ListadoProductosComponent = () => {
 
-  const {addItemToCart, added, showToast} = useContext(CartContext) as any;
+  const {addItemToCart, added, showToast} = useContext(CartContext) as CartContextType;
 
   const products = useSelector( (state: any) => state.productsReducer.productsList )
 

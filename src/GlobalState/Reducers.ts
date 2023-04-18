@@ -3,7 +3,8 @@ import { IAction, ProductsState } from "../models";
 const PRODUCTS_INITIAL_STATE: ProductsState = {
     productsList: [],
     bought: [],
-    onErrorFetch: '',
+    getProductsListError: '',
+    executePurchaseError: '',
     setLoader: false
 }
 
@@ -22,7 +23,17 @@ export const productsReducer = (state: ProductsState = PRODUCTS_INITIAL_STATE, a
     case 'LIST_LOADED_FAILED':
       return {
         ...state,
-        onErrorFetch: action.payload
+        getProductsListError: action.payload
+      };
+    case 'PURCHASE_SUCCESSFUL':
+      return {
+        ...state,
+        bought: action.payload
+      };
+    case 'PURCHASE_FAILED':
+      return {
+        ...state,
+        executePurchaseError: action.payload
       };
     default:
       return state

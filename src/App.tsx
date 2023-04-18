@@ -5,11 +5,12 @@ import { ListadoProductosComponent } from "./components/ListadoProductosComponen
 import { CartContext } from "./CartContext/CartContext";
 import { useDispatch } from 'react-redux';
 import { getProductsList } from "./GlobalState/Actions";
+import { CartContextType } from "./models";
 
 function App() {
 
   const dispatcher = useDispatch();
-  const {showCarrito} = useContext(CartContext) as any;
+  const {showCarrito} = useContext(CartContext) as CartContextType;
 
   useEffect(() => {
     dispatcher(getProductsList() as any);

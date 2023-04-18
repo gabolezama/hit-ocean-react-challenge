@@ -14,6 +14,7 @@ export type CartContextType = {
     showCarrito: boolean;
     setShowCarrito: React.Dispatch<React.SetStateAction<boolean>>;
     addItemToCart: (item: IProduct, price: number) => void;
+    buyItems: (arrayToBuy: IProduct[]) => void;
     deleteItem: (id: number, price: number) => void;
     setShowToast:  React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -28,7 +29,8 @@ export interface ErrorResponse {
 export interface ProductsState {
     productsList: IProduct[];
     bought: IProduct[];
-    onErrorFetch: string;
+    getProductsListError: string,
+    executePurchaseError: string,
     setLoader: boolean;
 }
   

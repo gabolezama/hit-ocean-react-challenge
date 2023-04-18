@@ -1,5 +1,7 @@
 import { ReactNode, createContext, useState } from 'react'
 import { CartContextType, IProduct } from '../models';
+import { executePurchase } from '../GlobalState/Actions';
+import { useDispatch } from 'react-redux';
 
 export const CartContext = createContext<CartContextType>(null!);
 
@@ -13,6 +15,7 @@ export function CartContextProvider({ children }: { children: ReactNode }) {
   let arrayAdded = [...added]
   let stonesCount = stones
 
+  const dispatcher = useDispatch()
 
   const addItemToCart = (item: IProduct, price: number) =>{
 
@@ -40,6 +43,13 @@ export function CartContextProvider({ children }: { children: ReactNode }) {
     setStones(stonesCount)
   }
 
+  const buyItems = (arrayToBuy: IProduct[]) =>{
+    dispatcher( executePurchase(arrayToBuy.map( (item: IProduct) => item.id)) as any)
+    setStones(3)
+    setAdded([])
+    setShowToast(true)
+  }
+
   return (
     <CartContext.Provider value = {{
         stones,
@@ -49,7 +59,8 @@ export function CartContextProvider({ children }: { children: ReactNode }) {
         setShowCarrito,
         addItemToCart,
         deleteItem,
-        setShowToast
+        setShowToast,
+        buyItems
     }}>
         {children}
     </CartContext.Provider>
